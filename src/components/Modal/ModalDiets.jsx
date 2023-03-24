@@ -1,19 +1,28 @@
 import Modal from "react-modal";
 import styles from "./modal.module.css"
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterDiets } from "../../redux/actions";
 
 const ModalDiets = ({ modalAbierto, setModalAbierto, handleFilter }) => {
-    const diets = ["vegan", "lacto", "whole 30", "vegetarian", "primal"];
+
     const [name, setName] = useState("");
-    const [searchD, setSearchD] = useState(["whole 30", "vegetarian", "primal"]);
+    const [searchD, setSearchD] = useState(["whole 30", "vegetarian", "primal"]); 
+    
+    const dispatch = useDispatch();
+
+    const searchDiet =  useSelector(state => state.foodReducer.filterDiets);
 
 
     const handleChange = (e) => {
         const nameDiet = e.target.value;
         setName(nameDiet);
 
-        const findDiet = diets.filter( item => item.includes(nameDiet));
-        setSearchD(findDiet)
+        // const findDiet = searchD.filter(item => item.includes(nameDiet));
+        dispatch(filterDiets(nameDiet));
+
+        // console.log(searchDiet);
+        setSearchD(searchDiet);
     }
 
     const handleClick = (e) => {

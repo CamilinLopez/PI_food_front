@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
-import { GET_ALL_RECIPES, GET_RECIPES_BY_SEARCH } from "./actions";
+import { GET_ALL_RECIPES, GET_RECIPES_BY_SEARCH, GET_DIETS, FILTER_DIETS } from "./actions";
 
 
 const initialState = {
-    recetas: []
+    recetas: [],
+    diets: [],
+    filterDiets:[]
 }
 
 const foodReducer = (state = initialState, action) => {
@@ -17,7 +19,19 @@ const foodReducer = (state = initialState, action) => {
             return{
                 ...state,
                 recetas: action.payload
-            }  
+            }
+        case GET_DIETS:
+            return{
+                ...state,
+                diets: action.payload
+            }
+        case FILTER_DIETS:
+            const {diets} = state;
+            const filterDiet = diets.filter(item => item.includes(action.payload));
+            return{
+                ...state,
+                filterDiets: filterDiet
+            }          
 
         default:
             return state;

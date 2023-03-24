@@ -3,6 +3,9 @@ import querystring from "querystring"
 
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_SEARCH = "GET_RECIPES_BY_SEARCH";
+export const GET_DIETS = "GET_DIETS";
+export const FILTER_DIETS = "FILTER_DIETS";
+
 
 
 export const getAllRecipes = (filter) => {
@@ -38,6 +41,26 @@ export const getRecipesBySearch = (name) => {
             console.log(error.message);
         }
     }
+}
+
+export const getDiets = () => {
+    return async (dispatch) => {
+        try {
+            const data = (await axiosInstance.get("/diets/getAllDiets")).data;
+            if (data.error) throw new Error(data.error);
+
+            return dispatch({
+                type: GET_DIETS,
+                payload: data
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
+
+export const filterDiets = (name) => {
+    return { type: FILTER_DIETS, payload: name }
 }
 
 

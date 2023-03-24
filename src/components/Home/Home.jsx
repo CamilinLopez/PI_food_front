@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllRecipes } from "../../redux/actions";
+import { getAllRecipes, getDiets } from "../../redux/actions";
 import styles from "./home.module.css";
 import Cards from "../Cards/Cards";
 import Paginado from "../Paginado/Paginado";
@@ -28,13 +28,15 @@ function Home() {
     const result = useSelector(state => state.foodReducer.recetas);
     const frist9Recipes = useSelector(state => state.foodReducer.recetas.slice(page.previousPage, page.actualPage));
 
-
     useEffect(() => {
+
         dispatch(getAllRecipes({
             dataFuete: "All",
             typeDiet: "All",
             ordenarByScore: "All",
         }));
+
+        dispatch(getDiets());
 
     }, [dispatch])
 
@@ -89,14 +91,14 @@ function Home() {
                     <div nombre="dataFuete" valor="api" onClick={handleFilter} style={{ cursor: 'pointer' }}>api</div>
                     <div nombre="dataFuete" valor="db" onClick={handleFilter} style={{ cursor: 'pointer' }}>db</div>
                     <div nombre="dataFuete" valor="All" onClick={handleFilter} style={{ cursor: 'pointer' }}>all</div>
-
+                    <br /><br />
                     <button onClick={submit} >Filtrar</button>
                 </div>
 
                 <div className={styles.card} >
                     {
                         !frist9Recipes.length ? <p key="1" >Loading....</p> :
-                        <Cards frist9Recipes={frist9Recipes} />
+                            <Cards frist9Recipes={frist9Recipes} />
                     }
                 </div>
             </div>
