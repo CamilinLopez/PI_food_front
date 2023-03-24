@@ -95,7 +95,7 @@ function Home() {
 
                 <div className={styles.card} >
                     {
-                        !frist9Recipes.length ? <p key="1" >Loading...</p> :
+                        !frist9Recipes.length ? <p key="1" >Loading....</p> :
                         <Cards frist9Recipes={frist9Recipes} />
                     }
                 </div>
