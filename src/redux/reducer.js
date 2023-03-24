@@ -27,10 +27,11 @@ const foodReducer = (state = initialState, action) => {
             }
         case FILTER_DIETS:
             const {diets} = state;
-            const filterDiet = diets.filter(item => item.includes(action.payload));
+            const filter = diets.filter(item => item.includes(action.payload));
+
             return{
                 ...state,
-                filterDiets: filterDiet
+                filterDiets: filter
             }          
 
         default:

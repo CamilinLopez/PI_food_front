@@ -23,6 +23,7 @@ function Home() {
         actualPage: 9
     });
     const [modalAbierto, setModalAbierto] = useState(false);
+    const [isSelected, setIsSelected] = useState(false);
 
 
     const result = useSelector(state => state.foodReducer.recetas);
@@ -43,7 +44,12 @@ function Home() {
 
     const submit = () => {
         dispatch(getAllRecipes(filter));
-        setFilter({ ...filter, dataFuete: "All", typeDiet: "All", ordenarByScore: "All", })
+    }
+
+    const reload = () => {
+        setIsSelected(false)
+        setFilter({ ...filter, dataFuete: "All", typeDiet: "All", ordenarByScore: "All", });
+        dispatch(getAllRecipes({ dataFuete: "All", typeDiet: "All", ordenarByScore: "All" }));
     }
 
     const recipePerPage = (numPag) => {
@@ -54,7 +60,7 @@ function Home() {
     }
 
     const handleFilter = (e) => {
-
+        setIsSelected(!isSelected)
         setFilter({
             ...filter,
             [e.target.getAttributeNS(null, "nombre")]: e.target.getAttributeNS(null, "valor")
@@ -72,7 +78,10 @@ function Home() {
                     <br />
                     <br />
                     <br />
-                    <h6>Dietas</h6>
+                    <div className={styles.titulo} >
+                        <h6>Dietas</h6>
+                        <p>{filter.typeDiet}</p>
+                    </div>
                     <div nombre="typeDiet" valor="gluten free" onClick={handleFilter} style={{ cursor: 'pointer' }}>gluten free</div>
                     <div nombre="typeDiet" valor="vegan" onClick={handleFilter} style={{ cursor: 'pointer' }}>vegan</div>
                     <div nombre="typeDiet" valor="primal" onClick={handleFilter} style={{ cursor: 'pointer' }}>primal</div>
@@ -81,18 +90,28 @@ function Home() {
                     <p style={{ cursor: 'pointer' }} onClick={() => setModalAbierto(true)}>Mostrar mas</p>
                     <ModalDiets modalAbierto={modalAbierto} setModalAbierto={setModalAbierto} handleFilter={handleFilter} />
 
-                    <h6>Ordenar</h6>
+                    <div className={styles.titulo} >
+                        <h6>Ordenar</h6>
+                        <p>{filter.ordenarByScore}</p>
+                    </div>
                     <div nombre="ordenarByScore" valor="acendente" onClick={handleFilter} style={{ cursor: 'pointer' }}>Ascendente</div>
                     <div nombre="ordenarByScore" valor="decendente" onClick={handleFilter} style={{ cursor: 'pointer' }}>Descendente</div>
                     <div nombre="ordenarByScore" valor="orderAlfabetic" onClick={handleFilter} style={{ cursor: 'pointer' }}>Alfavetico</div>
                     <div nombre="ordenarByScore" valor="All" onClick={handleFilter} style={{ cursor: 'pointer' }}>all</div>
                     <br />
+
+                    <div className={styles.titulo} >
                     <h6>From</h6>
+                    <p>{filter.dataFuete}</p>
+                    </div>
                     <div nombre="dataFuete" valor="api" onClick={handleFilter} style={{ cursor: 'pointer' }}>api</div>
                     <div nombre="dataFuete" valor="db" onClick={handleFilter} style={{ cursor: 'pointer' }}>db</div>
                     <div nombre="dataFuete" valor="All" onClick={handleFilter} style={{ cursor: 'pointer' }}>all</div>
                     <br /><br />
-                    <button onClick={submit} >Filtrar</button>
+                    <div className={styles.butons} >
+                        <button onClick={submit} >Filtrar</button>
+                        <button onClick={reload} >Recargar</button>
+                    </div>
                 </div>
 
                 <div className={styles.card} >

@@ -31,7 +31,11 @@
     color: rgb(167, 166, 166);
     position: relative;
     left: 300px;
-    bottom: 268px; 
+    bottom: 190px; 
+}
+
+.modal button:hover {
+    color: cornflowerblue;
 }
 
 .modal input {
@@ -55,7 +59,7 @@
     position: relative;
     top: 50px;
     left: 20px;
-    height: 300px;
+    height: 150px;
     width: 300px;
     overflow: auto;
     cursor: pointer;

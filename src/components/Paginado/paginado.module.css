@@ -1,0 +1,18 @@
+.principal button {
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.principal button:hover {
+    background-color: cornflowerblue;
+}
+
+.select {
+    background-color: cornflowerblue; 
+}
+
+.noSelect {
+    background-color: white;
+}

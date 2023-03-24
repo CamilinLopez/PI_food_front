@@ -6,7 +6,7 @@ function Cards({ frist9Recipes }) {
     return (
         <div className={styles.principal} >
             {
-                frist9Recipes.map(({ title, id, image, diets, status }) => {
+                frist9Recipes.map(({ title, id, image, diets, healthScore, status }) => {
                     return (
                         <Card
                             title={title}
@@ -14,6 +14,7 @@ function Cards({ frist9Recipes }) {
                             image={image}
                             diets={diets}
                             status={status}
+                            healthScore={healthScore}
                         />
                     )
                 })

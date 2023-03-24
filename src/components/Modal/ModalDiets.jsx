@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import styles from "./modal.module.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterDiets } from "../../redux/actions";
 
@@ -12,19 +12,20 @@ const ModalDiets = ({ modalAbierto, setModalAbierto, handleFilter }) => {
     const dispatch = useDispatch();
 
     const searchDiet =  useSelector(state => state.foodReducer.filterDiets);
+    const diets =  useSelector(state => state.foodReducer.diets);
 
+    
+    useEffect(() => {
+        if(name === "") setSearchD(diets)
+    },[setSearchD, name, diets])
 
     const handleChange = (e) => {
         const nameDiet = e.target.value;
         setName(nameDiet);
-
-        // const findDiet = searchD.filter(item => item.includes(nameDiet));
+        
         dispatch(filterDiets(nameDiet));
-
-        // console.log(searchDiet);
         setSearchD(searchDiet);
     }
-
     const handleClick = (e) => {
         handleFilter(e);
         setModalAbierto(false)

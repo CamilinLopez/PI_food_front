@@ -12,7 +12,7 @@
 }
 
 .filtro {
-    width: 15%;
+    width: 12%;
     box-sizing: border-box;
     padding: 10px;
     display: flex;
@@ -32,18 +32,28 @@
     font-weight: 500;
 }
 
-.filtro button {
+.butons {
+    display: flex;
+    position: relative;
+    right: 15px;
+}
+
+.butons button {
+    font-size: 15px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    position: relative;
+    position: relative; 
+    margin-left: 15px;
     /* top: 70px; */
 }
 
-
+.butons button:hover {
+    background-color: cornflowerblue;
+}
 
 .card {
-    width: 85%;
+    width: 88%;
     box-sizing: border-box;
     padding: 10px;
 }
@@ -54,6 +64,15 @@
     padding: 10px;
 }
 
-.select {
-    color: gray;
+.titulo {
+    display: flex;
+}
+
+.titulo p{
+    position: relative;
+    left: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: aqua;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
