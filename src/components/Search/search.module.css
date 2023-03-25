@@ -1,0 +1,26 @@
+.principal input {
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    height: 38px;
+    background-color: #73c996;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.principal input:hover {
+    background-color: rgba(255, 140, 0,.6);;
+}
+
+.principal button{
+    position: relative;
+    right: 70px;
+    border: 1px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #6ebe8e;
+}
+
+.principal button:hover {
+    background-color: #ff8c00;
+}

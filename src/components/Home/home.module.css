@@ -1,5 +1,5 @@
 .principal {
-    background-color: #b7cd7f;
+    background-color: #73c996;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #90ac5a;
+    background-color: #73c996;
 }
 
 
@@ -43,13 +43,15 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    position: relative; 
+    position: relative;
     margin-left: 15px;
+    background-color: #6ebe8e;
+
     /* top: 70px; */
 }
 
 .butons button:hover {
-    background-color: cornflowerblue;
+    background-color: #ff8c00;
 }
 
 .card {
@@ -62,17 +64,18 @@
     margin-top: auto;
     box-sizing: border-box;
     padding: 10px;
+    background-color: #73c996;
 }
 
 .titulo {
     display: flex;
 }
 
-.titulo p{
+.titulo p {
     position: relative;
     left: 5px;
-    border: 1px solid black;
+    border: 1px solid #73c996;
     border-radius: 5px;
-    background-color: aqua;
+    background-color: #73c996;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }

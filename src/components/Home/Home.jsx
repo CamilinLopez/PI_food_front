@@ -40,8 +40,7 @@ function Home() {
         dispatch(getDiets());
 
     }, [dispatch])
-
-
+    
     const submit = () => {
         dispatch(getAllRecipes(filter));
     }

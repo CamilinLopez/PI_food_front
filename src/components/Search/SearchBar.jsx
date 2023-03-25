@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./search.module.css";
 
 const SearchBar = ({ onSearch }) => {
     const [recipe, setRecipe] = useState("");
@@ -8,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
     }
 
     return (
-        <div>
+        <div className={styles.principal} >
             <input
                 type={"search"}
                 value={recipe}

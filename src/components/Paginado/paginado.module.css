@@ -1,18 +1,30 @@
-.principal button {
+/* .principal button {
     border: none;
     margin: 5px;
     border-radius: 5px;
     font-size: 18px;
-}
+    background-color: #6ebe8e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+} */
 
 .principal button:hover {
-    background-color: cornflowerblue;
+    background-color: #ff8c00;
 }
 
-.select {
-    background-color: cornflowerblue; 
+.noselected {
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #6ebe8e;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.noSelect {
-    background-color: white;
+.selected {
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #ff8c00;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
