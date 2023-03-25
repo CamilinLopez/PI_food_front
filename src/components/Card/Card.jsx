@@ -1,6 +1,7 @@
 import styles from "./Card.module.css";
+import { Link } from "react-router-dom";
 
-function Card({ title, image, diets, healthScore, status }) {
+function Card({ title, image, diets, healthScore, status, id }) {
 
     return (
         <div className={styles.principal} >
@@ -12,7 +13,9 @@ function Card({ title, image, diets, healthScore, status }) {
                     <div>
                         <p>health score {healthScore}</p>
 
-                        <h6>{title}</h6>
+                        <Link to={`/Detail/${id}`}>
+                            <h6>{title}</h6>
+                        </Link>
                         <img src={image} alt={title} />
                         <ul>
                             {

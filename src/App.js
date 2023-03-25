@@ -2,9 +2,12 @@ import './App.css';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Landing from './components/Landing/Landing';
 import { useEffect, useState } from 'react';
+
 import Home from './components/Home/Home';
 import Form from './components/Form/Form';
 import Nav from './components/Nav/Nav';
+import Detail from './components/Detail/Detail';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -17,11 +20,11 @@ function App() {
 
 
   useEffect(() => {
-    if (home.pass && home.bit===true) {
-      setHome({...home, bit:false});
+    if (home.pass && home.bit === true) {
+      setHome({ ...home, bit: false });
       navigate("/Home");
-    } 
-  }, [home,setHome,navigate])
+    }
+  }, [home, setHome, navigate])
 
   return (
     <div className="App">
@@ -36,13 +39,14 @@ function App() {
               <Route path='/' element={<Landing setHome={setHome} home={home} />} />
             </>
             :
-            
+
             <>
               <Route path='/Home' element={<Home />} />
-              <Route path='/Form' element={<Form /> } />
+              <Route path='/Form' element={<Form />} />
+              <Route path='/Detail/:DetailId' element={<Detail />} />
             </>
         }
-        <Route path='*' element={<Navigate to="/" /> } />
+        <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

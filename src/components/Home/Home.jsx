@@ -86,7 +86,7 @@ function Home() {
                     <div nombre="typeDiet" valor="primal" onClick={handleFilter} style={{ cursor: 'pointer' }}>primal</div>
                     <div nombre="typeDiet" valor="All" onClick={handleFilter} style={{ cursor: 'pointer' }}>all</div>
 
-                    <p style={{ cursor: 'pointer' }} onClick={() => setModalAbierto(true)}>Mostrar mas</p>
+                    <p className={styles.mostrar} style={{ cursor: 'pointer' }} onClick={() => setModalAbierto(true)}>Mostrar mas</p>
                     <ModalDiets modalAbierto={modalAbierto} setModalAbierto={setModalAbierto} handleFilter={handleFilter} />
 
                     <div className={styles.titulo} >

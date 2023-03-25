@@ -15,6 +15,7 @@ function Cards({ frist9Recipes }) {
                             diets={diets}
                             status={status}
                             healthScore={healthScore}
+                            id={id}
                         />
                     )
                 })

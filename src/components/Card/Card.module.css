@@ -33,4 +33,16 @@
     top: 1%;
 }
 
+.principal h6{
+    color: black;
+}
+
+.principal h6:hover {
+    font-size: 15px;
+}
+
+.principal a {
+    text-decoration: none;
+}
+
 
