@@ -1,0 +1,82 @@
+.principal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.principal button{
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #6ebe8e;
+}
+
+.principal button:hover {
+    background-color: #ff8c00;
+}
+
+.crear {
+    margin-left: 10px;
+}
+
+.title {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.contenedor {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.form {
+    display: flex;
+    gap: 130px;
+}
+
+.form input {
+    border-radius: 5px;
+    border-width: 1px;
+    outline: none;
+}
+
+
+.inputs1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+    gap: 40px;
+}
+
+.inputs2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputs2 textarea {
+    width: 250px;
+}
+
+.inputs3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.inputs4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputs4 p {
+    color: darkcyan;
+    cursor: pointer;
+}
