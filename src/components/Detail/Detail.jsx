@@ -2,7 +2,7 @@ import axiosInstance from "../../configAxios";
 import style from "./detail.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Step from "./Step/Step";
 
 
 function Detail() {
@@ -11,7 +11,6 @@ function Detail() {
 
 
     useEffect(() => {
-        console.log("mama");
         const getDetail = async () => {
             const data = (await axiosInstance.get(`/recipes/${DetailId}`)).data;
             setDetail(data);
@@ -29,31 +28,41 @@ function Detail() {
             {
                 Object.keys(detail).length === 0
                     ?
-                    <h5>Loading...</h5>
+                    <h6>Loading...</h6>
                     :
-                    <div className={style.princial} >
+                    <div className={style.principal} >
 
-                        <div className={style.div1} >
+                        <div className={style.contenedor1} >
+                            <div className={style.inf1} >
 
-                            <div className={style.imgTitle} >
-                                <h6>{detail.title}</h6>
+                                <h5>{detail.title}</h5>
                                 <img src={detail.image} alt={detail.id} />
-                                
-                                <div className={style.info} >
+
+                                <div className={style.hsId} >
                                     <p>ID: {detail.id}</p>
-                                    <p className={style.hs} >healthScore: {detail.healthScore}</p>
+                                    <p>healthScore: {detail.healthScore}</p>
                                 </div>
+
                             </div>
 
-                            <div className={style.summary} >
-                                <h6>summary</h6>
+                            <div className={style.inf2} >
+                                <h5>summary</h5>
                                 <p dangerouslySetInnerHTML={{ __html: highlightWords(detail.summary) }} />
                             </div>
-
                         </div>
+
                         <hr />
 
+                        <div className={style.contenedor2} >
+                            <div className={style.step} >
+                                <Step analyzedInstructions={detail.analyzedInstructions[0].steps} />
+                            </div>
+                            <div className={style.diets} >
+                                <h5>dietas</h5>
+                            </div>
+                        </div>
                     </div>
+
             }
         </>
     )
