@@ -1,12 +1,38 @@
 .principal {
+    height: 80px;
     display: flex;
-    height: 70px;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: center;
     background-color: #73c996;
 }
 
+.contenedor {
+    display: flex;
+    gap: 300px;
+}
+
 .botones {
+    display: flex;
+    margin-right: 60px;
+    gap: 50px;
+}
+
+.botones a {
+    background-color: #6ebe8e;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    font-size: larger;
+    color: black;
+    height: 35px;
+    width: 65px;
+}
+
+.botones a:hover{
+    background-color: #ff8c00;
+}
+
+
+/* .botones {
     display: flex;
     position: relative;
     left: 650px;
@@ -42,4 +68,4 @@
 .from:hover {
     color: black;
     background-color: #ff8c00;
-}
+} */
