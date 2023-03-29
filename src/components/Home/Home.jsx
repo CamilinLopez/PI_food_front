@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getAllRecipes, getDiets } from "../../redux/actions";
 import styles from "./home.module.css";
 import Cards from "../Cards/Cards";
@@ -10,6 +10,7 @@ import ModalDiets from '../Modal/ModalDiets';
 
 
 function Home() {
+    const containerRef = useRef(null);
 
     const dispatch = useDispatch();
 
@@ -39,8 +40,25 @@ function Home() {
 
         dispatch(getDiets());
 
+        const container = containerRef.current;
+        if (container) {
+            container.addEventListener('wheel', handleWheel);
+            return () => container.removeEventListener('wheel', handleWheel);
+        }
+
     }, [dispatch])
-    
+
+
+    const handleWheel = (event) => {
+        const container = containerRef.current;
+        if (container) {
+            container.scrollBy(0, event.deltaY);
+            event.preventDefault();
+        }
+    };
+
+
+
     const submit = () => {
         dispatch(getAllRecipes(filter));
     }
@@ -74,9 +92,7 @@ function Home() {
             <div className={styles.contenedor} >
 
                 <div className={styles.filtro} >
-                    <br />
-                    <br />
-                    <br />
+                
                     <div className={styles.titulo} >
                         <h6>Dietas</h6>
                         <p>{filter.typeDiet}</p>
@@ -100,8 +116,8 @@ function Home() {
                     <br />
 
                     <div className={styles.titulo} >
-                    <h6>From</h6>
-                    <p>{filter.dataFuete}</p>
+                        <h6>From</h6>
+                        <p>{filter.dataFuete}</p>
                     </div>
                     <div nombre="dataFuete" valor="api" onClick={handleFilter} style={{ cursor: 'pointer' }}>api</div>
                     <div nombre="dataFuete" valor="db" onClick={handleFilter} style={{ cursor: 'pointer' }}>db</div>
@@ -113,12 +129,12 @@ function Home() {
                     </div>
                 </div>
 
-                <div className={styles.card} >
-                    {
-                        !frist9Recipes.length ? <p key="1" >Loading....</p> :
-                            <Cards frist9Recipes={frist9Recipes} />
-                    }
+                <div className={styles.cardContainer} ref={containerRef}>
+                    <div className={styles.card}>
+                        {!frist9Recipes.length ? <p key="1" >Loading....</p> : <Cards frist9Recipes={frist9Recipes} />}
+                    </div>
                 </div>
+
             </div>
 
             <div className={styles.page} >

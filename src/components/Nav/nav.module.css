@@ -3,7 +3,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #73c996;
+    background-color: #EFEFEF;
 }
 
 .contenedor {
@@ -18,17 +18,19 @@
 }
 
 .botones a {
-    background-color: #6ebe8e;
+    background-color: #8B6DC4;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     font-size: larger;
     color: black;
     height: 35px;
     width: 65px;
+    text-decoration: none;
 }
 
 .botones a:hover{
-    background-color: #ff8c00;
+    background-color: #6c41bd;
+    color: black;
 }
 
 

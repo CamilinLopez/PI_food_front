@@ -1,14 +1,84 @@
 .principal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.contenedor {
+    display: flex;
+    height: 80%;
+}
+
+.cardContainer {
+    width: 88%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.page {
+    background-color: #EFEFEF;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5px;
+    width: 150px;
+    background-color: #EFEFEF;
+}
+
+.filtro div {
+    font-size: small;
+    font-weight: 500;
+}
+
+
+.titulo {
+    display: flex;
+    gap: .2rem;
+}
+
+.titulo p {
+    position: relative;
+    left: 5px;
+    border: 1px solid #EFEFEF;
+    border-radius: 5px;
+    background-color: #EFEFEF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.butons {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: #EFEFEF;
+    margin-top: 60px;
+}
+
+.butons button {
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #8B6DC4;
+}
+
+.butons button:hover {
+    background-color: #6c41bd;
+}
+
+/* .principal {
     background-color: #73c996;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .contenedor {
     display: flex;
     width: 100%;
-    height: 85%;
+    height: 50%;
 }
 
 .filtro {
@@ -18,7 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #73c996;
+    background-color: #0b1f13;
 }
 
 
@@ -46,25 +116,25 @@
     position: relative;
     margin-left: 15px;
     background-color: #6ebe8e;
-
-    /* top: 70px; */
 }
 
 .butons button:hover {
     background-color: #ff8c00;
 }
 
-.card {
+.cardContainer {
     width: 88%;
-    box-sizing: border-box;
-    padding: 10px;
+    height: 90%;
+    overflow-y: scroll;
 }
+
 
 .page {
     margin-top: auto;
     box-sizing: border-box;
     padding: 10px;
-    background-color: #73c996;
+    background-color: #26d46c;
+    height: 10%;
 }
 
 .titulo {
@@ -82,4 +152,4 @@
 
 .mostrar {
     color: #1A237E;
-}
+} */

@@ -4,34 +4,44 @@ import { Link } from "react-router-dom";
 function Card({ title, image, diets, healthScore, status, id }) {
 
     return (
-        <div className={styles.principal} >
+        <>
             {
                 status
                     ?
                     <h3>No hay resultados</h3>
                     :
-                    <div>
-                        <p>health score {healthScore}</p>
+                    <div className={styles.principal} >
 
-                        <Link to={`/Detail/${id}`}>
-                            <h6>{title}</h6>
-                        </Link>
-                        <img src={image} alt={title} />
-                        <ul>
-                            {
-                                diets.map((item, pos) => {
-                                    return (
-                                        <li key={pos} > {
-                                            item.name ? item.name : item
-                                        } </li>
-                                    )
-                                })
-                            }
-                        </ul>
+                        <div className={styles.contenedor} >
+
+                            <div className={styles.imgDiets} >
+                                <img src={image} alt={title} />
+                                <div className={styles.list} >
+
+                                    {
+                                        diets.map((item, pos) => {
+                                            return (
+                                                <li key={pos}>{
+                                                    item.name ? item.name : item
+                                                }</li>
+                                            )
+                                        })
+                                    }
+
+                                </div>
+                            </div>
+                            <div className={styles.titleScore} >
+                                <Link to={`/Detail/${id}`}>
+                                    <h6>{title}</h6>
+                                </Link>
+                                <p>healthScore {healthScore}</p>
+                            </div>
+                        </div>
+
                     </div>
             }
 
-        </div>
+        </>
     )
 }
 

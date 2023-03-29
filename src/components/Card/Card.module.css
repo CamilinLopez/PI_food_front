@@ -1,8 +1,82 @@
 .principal {
-    width: auto;
-    height: auto;
+    /* background-color: #73c996; */
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    width: 340px;
+}
+
+/* .principal:hover {
+    background-color: rgba(3, 3, 3, 0.527);    
+} */
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.principal img {
+    border-radius: 5px;
+}
+
+.imgDiets {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    height: 25px;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.list:hover {
+    overflow-y: auto;
+}
+
+.titleScore {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+    width: 70%;
+    height: 70px;
+}
+
+.titleScore a {
+    text-decoration: none;
+}
+
+.titleScore h6 {
+    text-align: start;
+    color: black;
+}
+
+.titleScore a :hover {
+    color: rgba(3, 3, 3, 0.527);
+}
+
+
+
+
+
+
+
+
+/* .principal {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     border-radius: 5px;
     background-color: rgba(255, 140, 0,.6);
 }
@@ -35,6 +109,8 @@
 
 .principal h6{
     color: black;
+    font-size: small;
+
 }
 
 .principal h6:hover {
@@ -43,6 +119,4 @@
 
 .principal a {
     text-decoration: none;
-}
-
-
+} */

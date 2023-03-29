@@ -59,6 +59,19 @@ function Detail() {
                             </div>
                             <div className={style.diets} >
                                 <h5>dietas</h5>
+                                <div className={style.listDiets} >
+                                    {
+                                        !detail.diets
+                                            ?
+                                            <h6>Loading...</h6>
+                                            :
+                                            detail.diets.map((item, pos) => {
+                                                return (
+                                                    <li key={pos} >{item}</li>
+                                                )
+                                            })
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
