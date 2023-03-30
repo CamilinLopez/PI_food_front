@@ -68,6 +68,17 @@
     background-color: #6c41bd;
 }
 
+.messageError {
+    position: relative;
+    top: 220px;
+    left: 400px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8B6DC4;
+    width: 300px;
+    padding: 40px;
+}
+
 /* .principal {
     background-color: #73c996;
     display: flex;

@@ -8,7 +8,7 @@ function Card({ title, image, diets, healthScore, status, id }) {
             {
                 status
                     ?
-                    <h3>{status.message}</h3>
+                    <h5 className={styles.messageError} >{status.message}</h5>
                     :
                     <div className={styles.principal} >
 

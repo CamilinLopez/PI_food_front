@@ -137,10 +137,10 @@ function Home() {
                         {
                             errorInit
                                 ?
-                                <h6>{errorInit.message}</h6>
+                                <h5 className={styles.messageError}>{errorInit.message}</h5>
                                 :
                                 <>
-                                    {!frist9Recipes.length ? <p key="1" >Loading....</p> : <Cards frist9Recipes={frist9Recipes} />}
+                                    {!frist9Recipes.length ? <p>Loading....</p> : <Cards frist9Recipes={frist9Recipes} />}
                                 </>
                         }
                     </div>
