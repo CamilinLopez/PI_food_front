@@ -20,16 +20,17 @@ function validateDatos(receta) {
 function validatePasos(paso) {
     let errors = {};
     if (!paso.step) errors.step = "Se requiere un nombre";
-    else if (((paso.step || '').match(/\b\w+\b/g)?.length || 0) >= 20) errors.step = "Demaciado largo";
+    else if (((paso.step || '').match(/\b\w+\b/g)?.length || 0) >= 10) errors.step = "Demaciado largo";
 
     return errors;
 }
 
+
 function validateDiet(diet) {
     let errors = {}
+
     if(!diet.name) errors.name = "Se requiere un nombre";
     else if(((diet.name || '').match(/\b\w+\b/g)?.length || 0) >= 4) errors.name = "Demaciado largo";
-
     return errors;
 }
 

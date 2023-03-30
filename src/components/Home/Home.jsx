@@ -29,6 +29,8 @@ function Home() {
 
     const result = useSelector(state => state.foodReducer.recetas);
     const frist9Recipes = useSelector(state => state.foodReducer.recetas.slice(page.previousPage, page.actualPage));
+    const errors = useSelector(state => state.foodReducer.errors);
+    const errorInit = errors.find(item => item.from === "getAllRecipes");
 
     useEffect(() => {
 
@@ -92,7 +94,7 @@ function Home() {
             <div className={styles.contenedor} >
 
                 <div className={styles.filtro} >
-                
+
                     <div className={styles.titulo} >
                         <h6>Dietas</h6>
                         <p>{filter.typeDiet}</p>
@@ -131,7 +133,16 @@ function Home() {
 
                 <div className={styles.cardContainer} ref={containerRef}>
                     <div className={styles.card}>
-                        {!frist9Recipes.length ? <p key="1" >Loading....</p> : <Cards frist9Recipes={frist9Recipes} />}
+
+                        {
+                            errorInit
+                                ?
+                                <h6>{errorInit.message}</h6>
+                                :
+                                <>
+                                    {!frist9Recipes.length ? <p key="1" >Loading....</p> : <Cards frist9Recipes={frist9Recipes} />}
+                                </>
+                        }
                     </div>
                 </div>
 
@@ -139,7 +150,7 @@ function Home() {
 
             <div className={styles.page} >
                 {
-                    !result.length ? <p>No results</p> : <Paginado numRecipes={result.length} recipePerPage={recipePerPage} />
+                    !result.length ? <p> </p> : <Paginado numRecipes={result.length} recipePerPage={recipePerPage} />
                 }
             </div>
 

@@ -37,13 +37,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #73c996;
+    background-color: #EFEFEF;
 }
 
 .crear button{
     height: 45px;
     width: 100px;
 }
+
+.message {
+    position: relative;
+    left: 200px;
+    width: 400px;
+    background-color: #EFEFEF;
+}
+
 
 .contenedor {
     display: flex;

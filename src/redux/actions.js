@@ -1,10 +1,13 @@
 import axiosInstance from "../configAxios";
 import querystring from "querystring"
 
+
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_SEARCH = "GET_RECIPES_BY_SEARCH";
 export const GET_DIETS = "GET_DIETS";
 export const FILTER_DIETS = "FILTER_DIETS";
+export const ALL_ERRORS = "ALL_ERRORS";
+export const DELETE_ERROR = "DELETE_ERROR";
 
 
 
@@ -21,7 +24,10 @@ export const getAllRecipes = (filter) => {
                 payload: data
             });
         } catch (error) {
-            console.log(error.message);
+            return dispatch({
+                type: ALL_ERRORS,
+                payload: {from:"getAllRecipes", message:(error.code?error.code:error.response.data)}
+            })
         }
     }
 }
@@ -31,14 +37,17 @@ export const getRecipesBySearch = (name) => {
         try {
             const data = (await axiosInstance.get(`/recipes?name=${name}`)).data;
 
-            if (data.error) throw new Error(data.error);
+            if (data.error) throw new Error(data.error.message);
 
             return dispatch({
                 type: GET_RECIPES_BY_SEARCH,
                 payload: data
             })
         } catch (error) {
-            console.log(error.message);
+            return dispatch({
+                type: ALL_ERRORS,
+                payload: {from:"getRecipesBySearch", message: error.response.data}
+            })
         }
     }
 }
@@ -63,5 +72,8 @@ export const filterDiets = (name) => {
     return { type: FILTER_DIETS, payload: name }
 }
 
+export const deleteError = (id) => {
+    return { type: DELETE_ERROR, payload:id  }
+}
 
 

@@ -5,11 +5,16 @@ import { validateDatos, val, validatePasos, validateDiet, validateIngredient, va
 import ModalDiets from "../Modal/ModalDiets";
 
 let steps = [];
-
+let dietas = [];
 const From = () => {
 
     const [modalAbierto, setModalAbierto] = useState(false);
     const [isSelected, setIsSelected] = useState(false);
+
+    const [statusCreate, setStatusCreate] = useState({
+        print: 0,
+        message: ""
+    });
 
     const [receta, setReceta] = useState({
         title: "",
@@ -86,6 +91,12 @@ const From = () => {
             localizedName: e.target.value
         })
 
+        setErrors3(validateIngredient(
+            {
+                ...ingredient,
+                [e.target.name]: e.target.value
+            }
+        ));
 
     }
 
@@ -95,6 +106,13 @@ const From = () => {
             [e.target.name]: e.target.value,
             localizedName: e.target.value
         })
+
+        setErrors4(validateEquipement(
+            {
+                ...equipment,
+                [e.target.name]: e.target.value
+            }
+        ));
 
     }
 
@@ -107,6 +125,7 @@ const From = () => {
                 [e.target.name]: e.target.value
             }
         ));
+
     }
 
     const handleOnChange5 = (e) => {
@@ -118,7 +137,58 @@ const From = () => {
 
 
     const submit = async (e) => {
+        let bg = {};
         e.preventDefault();
+        if (receta.analyzedInstructions[0].steps.length){
+            bg.step = " ";
+        }else bg = paso;
+
+
+
+        if (Object.keys(validateDatos(receta)).length === 0 && Object.keys(validatePasos(bg)).length === 0 && Object.keys(validateDiet(diet))) {
+            try {
+                let response = (await axiosInstance.post("/recipes", receta));
+                if (response.error) throw new Error(response.error);
+                setStatusCreate({
+                    ...statusCreate,
+                    print: 1,
+                    message: response.data
+                })   
+            } catch (error) {
+                setStatusCreate({
+                    ...statusCreate,
+                    print: 2,
+                    message: error.response.data
+                })
+            }
+
+
+            setErrors({})
+            setErrors1({})
+            setErrors2({})
+            setErrors3({})
+            setErrors4({})
+
+        } else {
+            setErrors(validateDatos(
+                {
+                    ...receta,
+                    [e.target.name]: e.target.value
+                }
+            ));
+            setErrors1(validatePasos(
+                {
+                    ...paso,
+                    [e.target.name]: e.target.value
+                }
+            ));
+            setErrors2(validateDiet(
+                {
+                    ...diet,
+                    [e.target.name]: e.target.value
+                }
+            ));
+        }
 
 
         setReceta({
@@ -155,16 +225,11 @@ const From = () => {
             image: ".jpg"
         })
 
+        setDiet({ ...diet, name: "" })
+
         steps = [];
+        dietas=[];
 
-        try {
-            let response = (await axiosInstance.post("/recipes", receta));
-            if (response.error) throw new Error(response.error);
-            console.log(response)
-        } catch (error) {
-
-            console.log(error);
-        }
 
     }
 
@@ -172,7 +237,7 @@ const From = () => {
 
         setErrors3(validateIngredient(ingredient));
 
-        if (ingredient.name !== "") {
+        if (Object.keys(validateIngredient(ingredient)).length === 0) {
             setIngredient({
                 ...ingredient,
                 id: ingredient.id + 1
@@ -183,7 +248,7 @@ const From = () => {
                 ingredients: [...paso.ingredients, ingredient]
             })
 
-            setIngredient({ ...ingredient, name: "" })
+            setIngredient({ ...ingredient, name: " " })
         }
 
     }
@@ -192,7 +257,7 @@ const From = () => {
 
         setErrors4(validateEquipement(equipment));
 
-        if (equipment.name !== "") {
+        if (Object.keys(validateEquipement(equipment)).length === 0) {
             setEquipment({
                 ...equipment,
                 id: equipment.id + 1
@@ -213,22 +278,21 @@ const From = () => {
 
         setErrors1(validatePasos(paso));
 
-
-        if (paso.step !== "") {
+        if (Object.keys(validatePasos(paso)).length === 0) {
 
             if (time.number !== "") paso.length = time;
 
-            // datos.steps.push(paso);
+        
+
             steps.push(paso)
 
             setReceta({
                 ...receta,
                 analyzedInstructions: [
                     { steps }
-                ],
-                prueba: "sii"
-
+                ]
             })
+
 
             setIngredient({ ...ingredient, name: "" })
             setEquipment({ ...equipment, name: "" })
@@ -248,21 +312,35 @@ const From = () => {
         }))
     }
 
+    const preventDiet = (fdietas, mdiet) => {
+        let perrors = {};
+
+        const si = fdietas.includes(mdiet)
+        if (si) perrors.name = "Ya existe esta dieta";
+        return perrors;
+    }
+
     const addDiets = () => {
 
-        setErrors2(validateDiet(diet));
 
-        if (diet.name !== "") {
-            setReceta({
-                ...receta,
-                diets: [...receta.diets, diet.name]
-            });
+        if (Object.keys(validateDiet(diet)).length === 0 && Object.keys(preventDiet(dietas, diet.name)).length === 0) {
+            setReceta(prevState => ({
+                ...prevState,
+                diets: [...prevState.diets, diet.name]
+            }));
+
 
             setDiet(prevState => ({
                 ...prevState,
                 name: ""
             }))
+
+        } else {
+            setErrors2(validateDiet(diet));
+            setErrors2(preventDiet(dietas, diet.name))
         }
+
+        dietas.push(diet.name);
 
     }
 
@@ -299,7 +377,7 @@ const From = () => {
 
                 <div className={style.fracment1} >
                     <div className={style.in1} >
-                        <h5>Pasos</h5>
+                        <h5>Pasos {steps.length + 1}</h5>
                         <input type="text" name="step" value={paso.step} onChange={handleOnChange1} placeholder="nombre del paso " />
                         <samp className={erroros1.step ? style.danger : style.nodanger} >{!erroros1.step ? val : erroros1.step}</samp>
                     </div>
@@ -345,6 +423,9 @@ const From = () => {
             </div>
             <div className={style.crear} >
                 <button onClick={submit} >crear</button>
+                <div className={style.message}>
+                    <h6>{statusCreate.message}</h6>
+                </div>
             </div>
         </div>
     )

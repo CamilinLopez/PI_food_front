@@ -22,7 +22,6 @@ function Detail() {
         return text.replace(/<b>(.*?)<\/b>/g, '<strong>$1</strong>');
     }
 
-
     return (
         <>
             {
@@ -67,7 +66,9 @@ function Detail() {
                                             :
                                             detail.diets.map((item, pos) => {
                                                 return (
-                                                    <li key={pos} >{item}</li>
+                                                    <li key={pos}>{
+                                                        item.name ? item.name : item
+                                                    }</li>
                                                 )
                                             })
                                     }
