@@ -25,7 +25,7 @@
     align-items: flex-start;
     margin-left: 5px;
     width: 150px;
-    background-color: #EFEFEF;
+    background-color: white
 }
 
 .filtro div {
@@ -42,9 +42,9 @@
 .titulo p {
     position: relative;
     left: 5px;
-    border: 1px solid #EFEFEF;
+    border: none;
     border-radius: 5px;
-    background-color: #EFEFEF;
+    background-color: rgba(41, 148, 41, 0.2); 
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -52,7 +52,6 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    background-color: #EFEFEF;
     margin-top: 60px;
 }
 
@@ -60,21 +59,21 @@
     font-size: 15px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    background-color: #8B6DC4;
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
+    background-color: rgba(41, 148, 41, 0.6); 
 }
 
 .butons button:hover {
-    background-color: #6c41bd;
+    background-color: rgba(41, 148, 41, 0.8); 
 }
 
 .messageError {
     position: relative;
     top: 220px;
     left: 400px;
-    border: none;
+    border: 5px solid green;
     border-radius: 5px;
-    background-color: #8B6DC4;
+    background-color: rgba(41, 148, 41, 0.6); 
     width: 300px;
     padding: 40px;
 }

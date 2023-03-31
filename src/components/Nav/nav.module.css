@@ -3,7 +3,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #EFEFEF;
+    /* background-color: #b4dcb0; */
+    background: linear-gradient(to bottom, #94af5da8, #ffffff);
 }
 
 .contenedor {
@@ -18,9 +19,11 @@
 }
 
 .botones a {
-    background-color: #8B6DC4;
+    background-color: rgba(41, 148, 41, 0.1); 
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid green;
+
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
     font-size: larger;
     color: black;
     height: 35px;
@@ -29,7 +32,7 @@
 }
 
 .botones a:hover{
-    background-color: #6c41bd;
+    background-color: rgba(40, 119, 40, 0.3); 
     color: black;
 }
 

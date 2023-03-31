@@ -1,26 +1,31 @@
 .principal input {
     outline: none;
     border-radius: 5px;
-    border: none;
+    border: 1px solid green;
     width: 250px;
     height: 38px;
-    background-color: #E6E6FA;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(41, 148, 41, 0.1); 
+    transition: box-shadow 0.2s ease-in-out;
+
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
 }
 
 .principal input:hover {
-    background-color: #e6eefa;;
+    /* background-color: rgba(40, 119, 40, 0.2);  */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+
 }
+
 
 .principal button{
     position: relative;
     right: 70px;
     border: 1px;
     border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    background-color: #8B6DC4;
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
+    background-color: rgba(41, 148, 41, 0.3); 
 }
 
 .principal button:hover {
-    background-color: #6c41bd;
+    background-color: rgba(40, 119, 40, 0.5); 
 }
