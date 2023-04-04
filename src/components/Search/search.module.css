@@ -1,4 +1,35 @@
+.principal {
+    display: flex;
+    width: 300px;
+}
+
+
 .principal input {
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(127, 255, 212, 0.6);
+    width: 300px;
+    height: 30px;
+}
+
+
+.principal button {
+    border: none;
+    font-size: smaller;
+    background-color: aqua;
+    border-radius: 10px;
+    position: relative;
+    right: 60px;
+    top: 3px;
+    height: 25px;
+}
+
+.principal button:hover {
+    background-color: rgb(0, 201, 201);
+}
+
+/* .principal input {
     outline: none;
     border-radius: 5px;
     border: 1px solid green;
@@ -6,14 +37,10 @@
     height: 38px;
     background-color: rgba(41, 148, 41, 0.1); 
     transition: box-shadow 0.2s ease-in-out;
-
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
 }
 
 .principal input:hover {
-    /* background-color: rgba(40, 119, 40, 0.2);  */
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-
 }
 
 
@@ -22,10 +49,9 @@
     right: 70px;
     border: 1px;
     border-radius: 5px;
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
     background-color: rgba(41, 148, 41, 0.3); 
 }
 
 .principal button:hover {
     background-color: rgba(40, 119, 40, 0.5); 
-}
+} */
