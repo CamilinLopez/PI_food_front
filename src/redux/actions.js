@@ -26,7 +26,7 @@ export const getAllRecipes = (filter) => {
         } catch (error) {
             return dispatch({
                 type: ALL_ERRORS,
-                payload: {from:"getAllRecipes", message:(error.response.data)}
+                payload: {from:"getAllRecipes", message:error}
             })
         }
     }

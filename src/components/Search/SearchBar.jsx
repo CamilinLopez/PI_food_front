@@ -8,14 +8,22 @@ const SearchBar = ({ onSearch }) => {
         setRecipe(e.target.value);
     }
 
+
     return (
         <div className={styles.principal} >
+
+
+
             <input
                 type={"search"}
                 value={recipe}
                 onChange={handleChange}
             />
-            <button onClick={() => onSearch(recipe)} >Buscar</button>
+            <button onClick={() => onSearch(recipe)} >
+                Buscar
+            </button>
+
+
         </div>
     )
 }
